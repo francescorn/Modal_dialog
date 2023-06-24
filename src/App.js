@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Modal from './components/Modal';
 
 function App() {
+  const [modalClick, setModalClick] = useState(false);
+
+  const showMyModal = () => {
+    setModalClick(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Create a Modal Dialog</h1>
+      <button onClick={showMyModal}>Show Modal</button>
+      {modalClick && (
+        <Modal setModalClick={setModalClick}>
+          <h1>Modal</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit nam et reprehenderit quibusdam temporibus
+            officia dolorum quo sint nemo quis, laborum, quasi nisi fugit praesentium debitis repudiandae! Sapiente, omnis.
+          </p>
+        </Modal>
+      )}
     </div>
   );
 }
